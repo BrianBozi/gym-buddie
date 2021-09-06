@@ -1,27 +1,57 @@
 import React from 'react';
-import { Grid, Typography, Button } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
 
-export default function TopNav(props) {
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1
+  },
+  bar: {
+    backgroundColor: '#DFDFDF'
+
+  },
+  menuButton: {
+    marginLeft: theme.spacing(11),
+    backgroundColor: 'white',
+    borderRadius: '12px',
+    height: 30,
+    width: 30
+  },
+  title: {
+    flexGrow: 1
+  },
+  btn: {
+    backgroundColor: 'white',
+    borderRadius: '12px'
+  },
+  icon: {
+    width: 10
+  }
+}));
+
+export default function TopNav() {
+  const classes = useStyles();
+
   return (
-    <>
-    <Grid container>
-      <Grid item scale={8}>
-        <Typography varient='h1'>
-          <span className="iconify" data-icon="map:gym"></span>
-          GYM BUDDIE
-        </Typography>
-      </Grid>
-      <Grid item scale={2}>
-        <Button>
-          <span className="iconify" data-icon="bx:bx-barcode-reader"></span>
-        </Button>
-      </Grid>
-      <Grid item scale={2} >
-        <Button>
-          <span className="iconify" data-icon="cil:hamburger-menu"></span>
-        </Button>
-      </Grid>
-    </Grid>
-    </>
+    <div className={classes.root}>
+      <AppBar position="static" className={classes.bar}>
+        <Toolbar>
+            <Typography variant="h6" color="textPrimary">
+            <span className="iconify" data-icon="map:gym"></span>
+              GYMBUDDIE
+            </Typography>
+          <Button className={classes.menuButton}>
+            <span className="iconify" data-icon="bx:bx-barcode-reader" data-width="30" data-height="30"></span>            </Button>
+          <IconButton >
+            <MenuIcon />
+            </IconButton>
+        </Toolbar>
+      </AppBar>
+    </div>
   );
 }
